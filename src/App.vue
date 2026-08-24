@@ -1,11 +1,28 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed, defineAsyncComponent } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+import { onMounted } from 'vue'
+import { useTenantStore } from '@/core/stores/useTenantStore'
+
+const tenantStore = useTenantStore()
+
+onMounted(() => {
+  tenantStore.fetchTenantConfig()
+})
+
+const AuthLayout = defineAsyncComponent(() => import('@/core/layouts/AuthLayout.vue'))
+const AdminLayout = defineAsyncComponent(() => import('@/core/layouts/AdminLayout.vue'))
+
+const currentLayout = computed(() => {
+  return route.meta.layout === 'AuthLayout' ? AuthLayout : AdminLayout
+})
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <component :is="currentLayout">
+    <RouterView />
+  </component>
 </template>
-
-<style scoped></style>

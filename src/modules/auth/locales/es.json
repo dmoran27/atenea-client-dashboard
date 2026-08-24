@@ -1,0 +1,47 @@
+{
+  "auth": {
+    "tabs": {
+      "login": "Iniciar Sesión",
+      "signup": "Registrarse"
+    },
+    "login": {
+      "welcome": "¡Bienvenido de nuevo!",
+      "welcomeDesc": "Ingresa tus credenciales para acceder a tu cuenta",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "correo@ejemplo.com",
+      "password": "Contraseña",
+      "passwordPlaceholder": "••••••••",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "remember": "Recordarme",
+      "submit": "Iniciar Sesión",
+      "orContinueWith": "O continúa con",
+      "google": "Continuar con Google",
+      "magicLink": "Enlace Mágico"
+    },
+    "signup": {
+      "title": "Crear una cuenta",
+      "titleDesc": "Ingresa tus datos para empezar",
+      "fullName": "Nombre Completo",
+      "fullNamePlaceholder": "Juan Pérez",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "correo@ejemplo.com",
+      "password": "Contraseña",
+      "passwordPlaceholder": "••••••••",
+      "confirmPassword": "Confirmar Contraseña",
+      "confirmPlaceholder": "••••••••",
+      "terms": "Acepto los términos y condiciones",
+      "submit": "Registrarse"
+    },
+    "forgotPassword": {
+      "title": "¿Olvidaste tu contraseña?",
+      "description": "Ingresa tu correo electrónico y te enviaremos las instrucciones para restablecerla.",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "correo@ejemplo.com",
+      "submit": "Enviar instrucciones",
+      "backToLogin": "Volver al inicio de sesión",
+      "successTitle": "¡Correo enviado!",
+      "successDescription": "Hemos enviado un enlace de recuperación a ",
+      "resend": "¿No recibiste el correo? Haz clic para reintentar"
+    }
+  }
+}
