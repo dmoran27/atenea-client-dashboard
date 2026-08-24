@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "Atenea"
+  },
+  "languages": {
+    "es": "Spanish",
+    "en": "English"
+  },
+  "header": {
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search...",
+    "filter": "Filter",
+    "back": "Back",
+    "confirm": "Confirm",
+    "actions": "Actions"
+  },
+  "states": {
+    "loading": "Loading...",
+    "success": "Operation successful",
+    "noResults": "No results found",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "errors": {
+    "unexpected": "An unexpected error occurred",
+    "network": "Server connection error",
+    "unauthorized": "You do not have permission to perform this action",
+    "notFound": "The requested resource does not exist"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address"
+  }
+}

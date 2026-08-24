@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "Atenea"
+  },
+  "languages": {
+    "es": "Español",
+    "en": "Inglés"
+  },
+  "header": {
+    "language": "Idioma",
+    "theme": "Tema",
+    "light": "Claro",
+    "dark": "Oscuro"
+  },
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "search": "Buscar...",
+    "filter": "Filtrar",
+    "back": "Volver",
+    "confirm": "Confirmar",
+    "actions": "Acciones"
+  },
+  "states": {
+    "loading": "Cargando...",
+    "success": "Operación exitosa",
+    "noResults": "No se encontraron resultados",
+    "active": "Activo",
+    "inactive": "Inactivo"
+  },
+  "errors": {
+    "unexpected": "Ocurrió un error inesperado",
+    "network": "Error de conexión con el servidor",
+    "unauthorized": "No tienes permisos para realizar esta acción",
+    "notFound": "El recurso solicitado no existe"
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "email": "Ingresa un correo electrónico válido"
+  }
+}
