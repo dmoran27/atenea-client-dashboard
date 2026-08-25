@@ -8,12 +8,13 @@ import { Label } from '@/core/components/ui/label'
 import { useForgotPasswordForm } from '../composables/useForgotPasswordForm'
 
 const { t } = useI18n()
-const { email, isLoading, isSent, handleSubmit, resetState } = useForgotPasswordForm()
+
+const { email, errors, isLoading, isSent, onSubmit, resetState } = useForgotPasswordForm()
 </script>
 
 <template>
   <div class="p-6">
-    <!-- Estado 1: Formulario de envío -->
+    <!--Formulario de envío -->
     <div v-if="!isSent" class="space-y-6">
       <div class="space-y-2 text-center sm:text-left">
         <h3 class="text-xl font-semibold tracking-tight">
@@ -24,16 +25,14 @@ const { email, isLoading, isSent, handleSubmit, resetState } = useForgotPassword
         </p>
       </div>
 
-      <form @submit.prevent="handleSubmit" class="space-y-4">
+      <form @submit.prevent="onSubmit" class="space-y-4">
         <div class="space-y-2">
           <Label for="forgot-email">{{ t('auth.forgotPassword.email') }}</Label>
-          <Input
-            id="forgot-email"
-            type="email"
-            v-model="email"
-            :placeholder="t('auth.forgotPassword.emailPlaceholder')"
-            required
-          />
+          <Input id="forgot-email" type="email" v-model="email" placeholder="email@example.com" />
+          <!-- Mensaje de error reactivo provisto por Zod -->
+          <span v-if="errors.email" class="text-xs text-destructive">
+            {{ errors.email }}
+          </span>
         </div>
 
         <Button type="submit" class="w-full" size="lg" :disabled="isLoading">
@@ -52,7 +51,7 @@ const { email, isLoading, isSent, handleSubmit, resetState } = useForgotPassword
       </div>
     </div>
 
-    <!-- Estado 2: Confirmación de envío exitoso -->
+    <!--  Confirmación de envío exitoso -->
     <div v-else class="space-y-6 text-center py-2">
       <div
         class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500"

@@ -8,20 +8,19 @@ import { Checkbox } from '@/core/components/ui/checkbox'
 import { useLoginForm } from '../composables/useLoginForm'
 
 const { t } = useI18n()
-const { email, password, remember, isLoading, handleSubmit } = useLoginForm()
+
+const { email, password, remember, isLoading, onSubmit, errors } = useLoginForm()
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit" class="space-y-4">
+  <form @submit.prevent="onSubmit" class="space-y-4">
     <div class="space-y-2">
       <Label for="login-email">{{ t('auth.login.email') }}</Label>
-      <Input
-        id="login-email"
-        type="email"
-        v-model="email"
-        :placeholder="t('auth.login.emailPlaceholder')"
-        required
-      />
+      <Input id="login-email" type="email" v-model="email" placeholder="email@example.com" />
+      <!-- Mensaje de error de Zod para el email -->
+      <span v-if="errors.email" class="text-xs text-destructive">
+        {{ errors.email }}
+      </span>
     </div>
 
     <div class="space-y-2">
@@ -39,8 +38,11 @@ const { email, password, remember, isLoading, handleSubmit } = useLoginForm()
         type="password"
         v-model="password"
         :placeholder="t('auth.login.passwordPlaceholder')"
-        required
       />
+      <!-- Mensaje de error de Zod para la contraseña -->
+      <span v-if="errors.password" class="text-xs text-destructive">
+        {{ errors.password }}
+      </span>
     </div>
 
     <div class="flex items-center gap-2">

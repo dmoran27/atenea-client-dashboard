@@ -1,40 +1,59 @@
 import { ref } from 'vue'
+import { useForm } from 'vee-validate'
+import { toTypedSchema } from '@vee-validate/zod'
+import { useMutation } from '@tanstack/vue-query'
+import { toast } from 'vue-sonner'
+import { authApi } from '@/core/api/auth'
+import { t } from '@/core/plugins/i18n'
+import { forgotSchema, type ForgotInput } from '../schemas/forgot.schema'
 
 export function useForgotPasswordForm() {
-  const email = ref('')
-  const isLoading = ref(false)
   const isSent = ref(false)
-  const errorMessage = ref('')
 
-  async function handleSubmit() {
-    if (!email.value) return
+  // 1. Control y validación con VeeValidate + Zod
+  const { handleSubmit, errors, defineField, resetForm } = useForm<ForgotInput>({
+    validationSchema: toTypedSchema(forgotSchema),
+    initialValues: {
+      email: '',
+    },
+  })
 
-    isLoading.value = true
-    errorMessage.value = ''
+  const [email] = defineField('email')
 
-    try {
-      // Reemplazar por llamada a API real: await api.post('/auth/forgot-password', { email: email.value })
-      await new Promise((resolve) => setTimeout(resolve, 1200))
+  // 2. Mutación de TanStack Query para el envío del correo de recuperación
+  const forgotMutation = useMutation({
+    mutationFn: (payload: ForgotInput) => authApi.forgotPassword(payload),
+    onSuccess: () => {
       isSent.value = true
-    } catch (error: any) {
-      errorMessage.value = error.response?.data?.message || 'Error al enviar el correo'
-    } finally {
-      isLoading.value = false
-    }
-  }
+      toast.success(t('auth.notifications.forgotSuccess'))
+    },
+    onError: (error: any) => {
+      if (error.response?.status === 404) {
+        toast.error(t('auth.errors.emailNotFound'))
+      } else {
+        console.error('[ForgotPasswordForm] Error al enviar correo:', error)
+      }
+    },
+  })
+
+  // 3. Handler de submit procesado por VeeValidate
+  const onSubmit = handleSubmit((values) => {
+    forgotMutation.reset()
+    forgotMutation.mutate(values)
+  })
 
   function resetState() {
     isSent.value = false
-    email.value = ''
-    errorMessage.value = ''
+    resetForm()
+    forgotMutation.reset()
   }
 
   return {
     email,
-    isLoading,
+    errors,
+    isLoading: forgotMutation.isPending,
     isSent,
-    errorMessage,
-    handleSubmit,
+    onSubmit,
     resetState,
   }
 }

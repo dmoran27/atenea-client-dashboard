@@ -1,42 +1,47 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import { useQueryClient } from '@tanstack/vue-query'
+import { toast } from 'vue-sonner'
 import router from '@/core/router'
-import { authApi, type AuthUser, type LoginCredentials } from '@/core/api/authApi'
-
-const TOKEN_KEY = 'atenea_auth_token'
+import { authApi } from '@/core/api/auth'
+import { useTenantStore } from '@/core/stores/useTenantStore'
+import i18n from '@/core/plugins/i18n'
+import type { AuthUser } from '../api/auth/auth.interface'
 
 export const useAuthStore = defineStore('auth', () => {
+  const queryClient = useQueryClient()
+  const tenantStore = useTenantStore()
+
   const user = ref<AuthUser | null>(null)
-  const token = ref<string | null>(localStorage.getItem(TOKEN_KEY))
-  const isLoading = ref(false)
+  const token = ref<string | null>(localStorage.getItem(tenantStore.tokenKey))
 
   const isAuthenticated = computed(() => Boolean(token.value))
 
-  async function login(credentials: LoginCredentials) {
-    isLoading.value = true
-    try {
-      const response = await authApi.login(credentials)
-
-      token.value = response.token
-      user.value = response.user
-      localStorage.setItem(TOKEN_KEY, response.token)
-
-      await router.push({ name: 'dashboard' })
-    } finally {
-      isLoading.value = false
-    }
+  // Helper para traducciones seguras fuera del setup de componentes
+  const getTranslation = (key: string): string => {
+    const globalI18n = i18n.global as any
+    return typeof globalI18n.t === 'function' ? globalI18n.t(key) : key
   }
 
-  async function fetchProfile() {
-    if (!token.value) return
+  function setSession(newToken: string, newUser: AuthUser) {
+    token.value = newToken
+    user.value = newUser
+    localStorage.setItem(tenantStore.tokenKey, newToken)
+  }
 
-    isLoading.value = true
-    try {
-      user.value = await authApi.me()
-    } catch {
-      logout()
-    } finally {
-      isLoading.value = false
+  function setUser(updatedUser: AuthUser | null) {
+    user.value = updatedUser
+  }
+
+  function clearSession(showNotification = false) {
+    user.value = null
+    token.value = null
+    localStorage.removeItem(tenantStore.tokenKey)
+    queryClient.clear()
+    router.push({ name: 'login' })
+
+    if (showNotification) {
+      toast.info(getTranslation('auth.notifications.sessionExpired'))
     }
   }
 
@@ -45,23 +50,36 @@ export const useAuthStore = defineStore('auth', () => {
       if (token.value) {
         await authApi.logout()
       }
+      toast.success(getTranslation('auth.notifications.logoutSuccess'))
     } catch (error) {
-      console.error('Error al cerrar sesión en el servidor:', error)
+      console.error('Error al cerrar sesión:', error)
+      toast.error(getTranslation('auth.notifications.logoutError'))
     } finally {
-      user.value = null
-      token.value = null
-      localStorage.removeItem(TOKEN_KEY)
-      router.push({ name: 'login' })
+      clearSession()
+    }
+  }
+
+  async function fetchUser() {
+    if (!token.value) return null
+
+    try {
+      const userData = await authApi.me()
+      user.value = userData
+      return userData
+    } catch (error) {
+      clearSession(true)
+      return null
     }
   }
 
   return {
     user,
     token,
-    isLoading,
     isAuthenticated,
-    login,
-    fetchProfile,
+    setSession,
+    setUser,
+    clearSession,
     logout,
+    fetchUser,
   }
 })

@@ -38,6 +38,22 @@
   },
   "validation": {
     "required": "This field is required",
-    "email": "Please enter a valid email address"
+    "email": "Please enter a valid email address",
+    "emailRequired": "Email address is required",
+    "emailInvalid": "Please enter a valid email address",
+    "passwordRequired": "Password is required",
+    "passwordMin": "Password must be at least 6 characters",
+    "nameRequired": "Full name is required",
+    "nameMin": "Name must be at least 2 characters",
+    "confirmPasswordRequired": "Please confirm your password",
+    "passwordMismatch": "Passwords do not match",
+    "termsRequired": "You must accept the terms and conditions"
+  },
+  "auth": {
+    "notifications": {
+      "logoutSuccess": "Successfully logged out.",
+      "logoutError": "An error occurred while logging out from the server.",
+      "sessionExpired": "Your session has expired. Please log in again."
+    }
   }
 }

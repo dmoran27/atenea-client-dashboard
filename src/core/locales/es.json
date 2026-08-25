@@ -34,10 +34,41 @@
     "unexpected": "Ocurrió un error inesperado",
     "network": "Error de conexión con el servidor",
     "unauthorized": "No tienes permisos para realizar esta acción",
-    "notFound": "El recurso solicitado no existe"
+    "notFound": "El recurso solicitado no existe",
+    "http": {
+      "unauthorized": "Tu sesión ha expirado. Por favor, inicia sesión de nuevo.",
+      "forbidden": "No tienes permisos suficientes para realizar esta acción.",
+      "serverError": "Ocurrió un error en el servidor. Inténtalo más tarde.",
+      "networkError": "Sin conexión con el servidor. Verifica tu red."
+    }
   },
   "validation": {
     "required": "Este campo es obligatorio",
-    "email": "Ingresa un correo electrónico válido"
+    "email": "Ingresa un correo electrónico válido",
+    "emailRequired": "El correo electrónico es requerido",
+    "emailInvalid": "Ingresa un correo electrónico válido",
+    "passwordRequired": "La contraseña es requerida",
+    "passwordMin": "La contraseña debe tener al menos 6 caracteres",
+    "nameRequired": "El nombre completo es requerido",
+    "nameMin": "El nombre debe tener al menos 2 caracteres",
+    "confirmPasswordRequired": "Por favor confirma tu contraseña",
+    "passwordMismatch": "Las contraseñas no coinciden",
+    "termsRequired": "Debes aceptar los términos y condiciones"
+  },
+  "notifications": {
+    "errors": {
+      "fetchFailed": "No se pudieron cargar las notificaciones.",
+      "markAllFailed": "No se pudieron marcar las notificaciones como leídas."
+    },
+    "success": {
+      "markedAllAsRead": "Notificaciones marcadas como leídas."
+    }
+  },
+  "auth": {
+    "notifications": {
+      "logoutSuccess": "Sesión cerrada correctamente.",
+      "logoutError": "Ocurrió un error al cerrar sesión en el servidor.",
+      "sessionExpired": "Tu sesión ha caducado. Por favor, inicia sesión nuevamente."
+    }
   }
 }

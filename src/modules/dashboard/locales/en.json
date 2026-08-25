@@ -1,0 +1,8 @@
+{
+  "dashboard": {
+    "nav": "Dashboard",
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "welcomeDesc": "Here's a summary of today's activity"
+  }
+}

@@ -1,5 +1,13 @@
 {
   "auth": {
+    "notifications": {
+      "loginSuccess": "¡Bienvenido de nuevo!",
+      "signupSuccess": "¡Cuenta creada con éxito! Bienvenido."
+    },
+    "errors": {
+      "invalidCredentials": "El correo o la contraseña son incorrectos.",
+      "emailAlreadyExists": "El correo electrónico ya se encuentra registrado."
+    },
     "tabs": {
       "login": "Iniciar Sesión",
       "signup": "Registrarse"
@@ -25,6 +33,8 @@
       "fullNamePlaceholder": "Juan Pérez",
       "email": "Correo Electrónico",
       "emailPlaceholder": "correo@ejemplo.com",
+      "phone": "Teléfono",
+      "phonePlaceholder": "+58 412 1234567",
       "password": "Contraseña",
       "passwordPlaceholder": "••••••••",
       "confirmPassword": "Confirmar Contraseña",
@@ -41,7 +51,9 @@
       "backToLogin": "Volver al inicio de sesión",
       "successTitle": "¡Correo enviado!",
       "successDescription": "Hemos enviado un enlace de recuperación a ",
-      "resend": "¿No recibiste el correo? Haz clic para reintentar"
+      "resend": "¿No recibiste el correo? Haz clic para reintentar",
+      "successMessage": "Hemos enviado las instrucciones de recuperación a tu correo electrónico.",
+      "tryAgain": "Intentar con otro correo"
     }
   }
 }

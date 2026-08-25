@@ -1,18 +1,42 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/core/components/ui/tabs'
 import LoginForm from '../components/LoginForm.vue'
 import SignupForm from '../components/SignupForm.vue'
-import type { AuthTab } from '../types/auth.types'
+import type { AuthTab } from '../types/auth.types.ts'
+import { useRoute, useRouter } from 'vue-router'
 
+const route = useRoute()
+const router = useRouter()
 const { t } = useI18n()
 
-const activeTab = ref<AuthTab>('login')
+const getTabFromRoute = (): AuthTab => {
+  return route.path.includes('register') ? 'signup' : 'login'
+}
+
+const activeTab = ref<AuthTab>(getTabFromRoute())
+
+watch(
+  () => route.path,
+  () => {
+    const expectedTab = getTabFromRoute()
+    if (activeTab.value !== expectedTab) {
+      activeTab.value = expectedTab
+    }
+  },
+)
+
+const handleTabChange = (value: string | number) => {
+  const targetPath = value === 'signup' ? '/register' : '/login'
+  if (route.path !== targetPath) {
+    router.replace(targetPath)
+  }
+}
 </script>
 
 <template>
-  <Tabs v-model="activeTab" class="w-full">
+  <Tabs class="w-full" :model-value="activeTab" @update:model-value="handleTabChange">
     <div class="px-6 pb-2">
       <TabsList class="grid w-full grid-cols-2">
         <TabsTrigger value="login" class="text-sm font-medium">

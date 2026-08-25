@@ -1,21 +1,22 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-
-export interface TenantInfo {
-  id: string
-  name: string
-  logoUrl?: string
-  modules: string[]
-}
+import { queryOptions, useQueryClient } from '@tanstack/vue-query'
+import { tenantApi, type TenantInfo } from '@/core/api/tenant'
 
 export const useTenantStore = defineStore('tenant', () => {
+  const queryClient = useQueryClient()
+
   const info = ref<TenantInfo | null>(null)
   const isLoading = ref(false)
   const isLoaded = ref(false)
 
-  // Getters computados
   const siteName = computed(() => info.value?.name || 'Atenea')
   const enabledModules = computed(() => info.value?.modules || [])
+
+  const tokenKey = computed(() => {
+    const identifier = info.value?.slug || info.value?.id
+    return identifier ? `atenea_${identifier}_auth_token` : 'atenea_auth_token'
+  })
 
   function hasModule(moduleKey: string): boolean {
     return enabledModules.value.includes(moduleKey)
@@ -26,15 +27,15 @@ export const useTenantStore = defineStore('tenant', () => {
 
     isLoading.value = true
     try {
-      // const domain = window.location.hostname
-      // const { data } = await api.get<TenantInfo>(`/public/tenant-config?domain=${domain}`)
+      const domain = window.location.hostname
 
-      // Simulación de respuesta API
-      info.value = {
-        id: 'tenant-123',
-        name: 'Barbería Capital',
-        modules: ['dashboard', 'bookings', 'coupons'],
-      }
+      info.value = await queryClient.query(
+        queryOptions({
+          queryKey: ['tenant-config', domain] as const,
+          queryFn: () => tenantApi.getTenantConfig(domain),
+          staleTime: Infinity,
+        }),
+      )
     } catch (error) {
       console.error('Error al cargar configuración del tenant:', error)
       info.value = null
@@ -48,6 +49,7 @@ export const useTenantStore = defineStore('tenant', () => {
     info,
     siteName,
     enabledModules,
+    tokenKey,
     isLoading,
     isLoaded,
     hasModule,
