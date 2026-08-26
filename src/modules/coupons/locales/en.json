@@ -1,0 +1,28 @@
+{
+  "coupons": {
+    "view": {
+      "title": "Coupons & Deals",
+      "description": "Redeem or manage your available discount codes."
+    },
+    "codeLabel": "Coupon code",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "inputPlaceholder": "Enter your code (e.g. ATENEA20)",
+    "applyBtn": "Apply Code",
+    "status": {
+      "active": "Active",
+      "expired": "Expired",
+      "used": "Redeemed"
+    },
+    "expiresAt": "Expires on: {date}",
+    "emptyList": "You have no available coupons at the moment.",
+    "validation": {
+      "codeMin": "Code must be at least 3 characters long",
+      "codeMax": "Code cannot exceed 20 characters",
+      "notFound": "The code entered does not exist or is invalid",
+      "expired": "This coupon has expired",
+      "alreadyUsed": "This coupon has already been used",
+      "success": "Coupon successfully applied!"
+    }
+  }
+}

@@ -5,6 +5,17 @@ Todos los cambios notables de este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/)
 y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-08-26
+
+### Added
+
+- Módulo completo de cupones y promociones (`CouponsView` y `CouponCard`).
+- Integración de API modular con fallback entre HTTP y Mock (`couponsApi`).
+- Validación de códigos promocionales con Zod e i18n (`validateCouponSchema`).
+- Composable `useCoupons` respaldado por TanStack Query para fetching y mutaciones de validación.
+- Función de copiado al portapapeles con feedback visual en tarjetas de cupones.
+- Traducciones completas en español (`es.json`) e inglés (`en.json`).
+
 ## [0.4.0] - 2026-08-26
 
 ### Added

@@ -8,6 +8,7 @@ import { authGuard, guestGuard, tenantModuleGuard } from './guards.ts'
 import { bookingRoutes } from '@/modules/bookings/router.ts'
 import { profileRoutes } from '@/modules/profile/router.ts'
 import { supportRoutes } from '@/modules/support/router.ts'
+import { couponRoutes } from '@/modules/coupons/router.ts'
 
 // Colección centralizada de rutas de módulos administrativos
 const adminModuleRoutes: RouteRecordRaw[] = [
@@ -15,7 +16,7 @@ const adminModuleRoutes: RouteRecordRaw[] = [
   ...bookingRoutes,
   ...profileRoutes,
   ...supportRoutes,
-  // ...couponRoutes,
+  ...couponRoutes,
 ]
 
 const routes: RouteRecordRaw[] = [

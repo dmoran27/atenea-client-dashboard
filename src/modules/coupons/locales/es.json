@@ -1,0 +1,28 @@
+{
+  "coupons": {
+    "view": {
+      "title": "Cupones y Promociones",
+      "description": "Canjea o gestiona tus códigos de descuento disponibles."
+    },
+    "codeLabel": "Código de cupón",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "inputPlaceholder": "Ingresa tu código (ej. ATENEA20)",
+    "applyBtn": "Aplicar Código",
+    "status": {
+      "active": "Disponible",
+      "expired": "Expirado",
+      "used": "Canjeado"
+    },
+    "expiresAt": "Vence el: {date}",
+    "emptyList": "No tienes cupones disponibles en este momento.",
+    "validation": {
+      "codeMin": "El código debe contener al menos 3 caracteres",
+      "codeMax": "El código no puede superar los 20 caracteres",
+      "notFound": "El código ingresado no existe o no es válido",
+      "expired": "Este cupón ha expirado",
+      "alreadyUsed": "Este cupón ya ha sido utilizado anteriormente",
+      "success": "¡Cupón aplicado con éxito!"
+    }
+  }
+}
