@@ -1,0 +1,60 @@
+{
+  "profile": {
+    "view": {
+      "title": "Profile Settings",
+      "subtitle": "Manage your account information and active sessions.",
+      "loading": "Loading profile information..."
+    },
+    "tabs": {
+      "info": "Information",
+      "security": "Security",
+      "preferences": "Preferences"
+    },
+    "info": {
+      "title": "Personal Information",
+      "description": "Update your personal details and contact info.",
+      "changeAvatar": "Change avatar",
+      "avatarHint": "JPG, GIF or PNG. Max 1MB.",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "save": "Save Changes",
+      "saving": "Saving..."
+    },
+    "security": {
+      "title": "Account Security",
+      "description": "Manage your password and active sessions.",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "updatePassword": "Update Password",
+      "twoFactor": "Two-Factor Authentication (2FA)",
+      "twoFactorDesc": "Add an extra layer of security to your account.",
+      "sessionsTitle": "Active Sessions",
+      "sessionsDescription": "Devices currently logged into your account.",
+      "currentSession": "Current Session",
+      "lastActivity": "Active",
+      "logoutOthers": "Log out all other devices"
+    },
+    "preferences": {
+      "title": "Preferences",
+      "description": "Customize your platform experience.",
+      "language": "Language",
+      "theme": "Theme",
+      "notifications": "Notifications",
+      "emailNotif": "Email Notifications",
+      "emailNotifDesc": "Receive emails about account activity.",
+      "smsNotif": "SMS Notifications",
+      "smsNotifDesc": "Receive important security alerts via SMS."
+    },
+    "validation": {
+      "nameMin": "Name must be at least 2 characters",
+      "emailInvalid": "Please enter a valid email address",
+      "phoneInvalid": "Phone number must have a valid format",
+      "currentPasswordRequired": "Current password is required",
+      "passwordMin": "New password must be at least 8 characters",
+      "confirmPasswordRequired": "You must confirm the new password",
+      "passwordsMismatch": "Passwords do not match"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "profile": {
+    "view": {
+      "title": "Configuración de Perfil",
+      "subtitle": "Gestiona la información de tu cuenta y sesiones activas.",
+      "loading": "Cargando información del perfil..."
+    },
+    "tabs": {
+      "info": "Información",
+      "security": "Seguridad",
+      "preferences": "Preferencias"
+    },
+    "info": {
+      "title": "Información Personal",
+      "description": "Actualiza tu información personal y de contacto.",
+      "changeAvatar": "Cambiar foto",
+      "avatarHint": "JPG, GIF o PNG. Máximo 1MB.",
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "save": "Guardar cambios",
+      "saving": "Guardando..."
+    },
+    "security": {
+      "title": "Seguridad de la Cuenta",
+      "description": "Gestiona tu contraseña y la seguridad de tu sesión.",
+      "currentPassword": "Contraseña actual",
+      "newPassword": "Nueva contraseña",
+      "confirmPassword": "Confirmar nueva contraseña",
+      "updatePassword": "Actualizar contraseña",
+      "twoFactor": "Autenticación de dos factores (2FA)",
+      "twoFactorDesc": "Añade una capa extra de seguridad a tu cuenta.",
+      "sessionsTitle": "Sesiones activas",
+      "sessionsDescription": "Dispositivos que han iniciado sesión recientemente con esta cuenta.",
+      "currentSession": "Sesión actual",
+      "lastActivity": "Activa",
+      "logoutOthers": "Cerrar sesión en los demás dispositivos"
+    },
+    "preferences": {
+      "title": "Preferencias",
+      "description": "Personaliza tu experiencia en la plataforma.",
+      "language": "Idioma",
+      "theme": "Tema",
+      "notifications": "Notificaciones",
+      "emailNotif": "Notificaciones por correo",
+      "emailNotifDesc": "Recibe avisos sobre la actividad de tu cuenta por email.",
+      "smsNotif": "Notificaciones por SMS",
+      "smsNotifDesc": "Recibe alertas de seguridad importantes por SMS."
+    },
+    "validation": {
+      "nameMin": "El nombre debe tener al menos 2 caracteres",
+      "emailInvalid": "Ingresa un correo electrónico válido",
+      "phoneInvalid": "El teléfono debe tener un formato válido",
+      "currentPasswordRequired": "La contraseña actual es requerida",
+      "passwordMin": "La nueva contraseña debe tener al menos 8 caracteres",
+      "confirmPasswordRequired": "Debes confirmar la nueva contraseña",
+      "passwordsMismatch": "Las contraseñas no coinciden"
+    }
+  }
+}
