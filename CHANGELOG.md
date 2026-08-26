@@ -5,6 +5,29 @@ Todos los cambios notables de este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/)
 y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-08-26
+
+### added
+
+- Módulo Global de Reservas (Booking): Implementación integral del nuevo módulo para la administración, consulta y gestión del flujo de vida de reservas.
+- Modal detallado de lectura (BookingViewModal) para la inspección de información de servicios, clientes, fechas, modalidades y observaciones.
+- Modal detallado la creacion y reagendamiento de reservas.
+- Menú contextual de acciones rápidas (BookingActionsMenu) para operaciones de visualización, reagendamiento y cancelación de reservas.
+- Composables de dominio para el procesamiento de configuraciones, servicios y estados del módulo.
+- Control de permisos y validaciones de reglas de negocio para reagendamiento y restricciones temporales.
+- Cobertura completa de claves i18n para el módulo, incluyendo estados, modalidades, etiquetas de formulario, acciones y mensajes del sistema.
+
+### Changed
+
+- Optimizaciones de UX/UI en Modales:
+- Rediseño de la jerarquía visual en componentes de diálogo, priorizando la legibilidad mediante divisores limpios y eliminando contenedores anidados.
+- Integración de bloques callout visuales con bordes de acento para la lectura fluida de descripciones y notas.
+
+### Fixed
+
+- Normalizacion en las traducciones de los composables en el core
+- Correccion en los utils globales
+
 ## [0.1.2] - 2026-08-24
 
 ### added

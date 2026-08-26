@@ -24,7 +24,7 @@ export function cn(...inputs: ClassValue[]): string {
 export function dateOffset(days: number): string {
   const d = new Date()
   d.setDate(d.getDate() + days)
-  return d.toISOString().substring(0, 10)
+  return formatLocalDate(d)
 }
 
 /**
@@ -68,9 +68,21 @@ export function getInitials(name?: string): string {
  * @param date - Objeto Date opcional (por defecto toma la fecha y hora actual).
  * @returns Cadena de texto con la fecha formateada como `YYYY-MM-DD`.
  */
-export function formatLocalDate(date = new Date()): string {
-  const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const day = String(date.getDate()).padStart(2, '0')
+export function formatLocalDate(date?: Date | string | null): string {
+  if (!date) return ''
+
+  if (typeof date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return date
+  }
+
+  const d =
+    typeof date === 'string' ? new Date(date.includes('T') ? date : `${date}T00:00:00`) : date
+
+  if (!(d instanceof Date) || isNaN(d.getTime())) return ''
+
+  const year = d.getFullYear()
+  const month = String(d.getMonth() + 1).padStart(2, '0')
+  const day = String(d.getDate()).padStart(2, '0')
+
   return `${year}-${month}-${day}`
 }

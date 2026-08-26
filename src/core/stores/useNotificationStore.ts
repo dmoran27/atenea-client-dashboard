@@ -1,12 +1,10 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { t } from '@/core/plugins/i18n'
 import { toast } from 'vue-sonner'
 import { notificationApi, type AppNotification } from '@/core/api/notification'
 
 export const useNotificationStore = defineStore('notifications', () => {
-  const { t } = useI18n()
-
   const notifications = ref<AppNotification[]>([])
   const isLoading = ref(false)
 

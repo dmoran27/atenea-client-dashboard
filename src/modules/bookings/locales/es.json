@@ -1,0 +1,115 @@
+{
+  "bookings": {
+    "nav": "Reservas y Citas",
+    "title": "Reservas y Citas",
+    "searchPlaceholder": "Buscar por cliente o servicio...",
+    "allStatuses": "Todos los estados",
+    "tableView": "Vista Tabla",
+    "calendarView": "Vista Calendario",
+    "columns": {
+      "clientService": "Cliente / Servicio",
+      "dateTime": "Fecha y Hora",
+      "status": "Estado",
+      "actions": "Acciones"
+    },
+    "actions": {
+      "view": "Ver detalles",
+      "edit": "Editar",
+      "cancel": "Cancelar reserva",
+      "confirm": "Confirmar reserva",
+      "delete": "Eliminar"
+    },
+    "status": {
+      "all": "Todos",
+      "confirmed": "Confirmada",
+      "pending": "Pendiente",
+      "cancelled": "Cancelada",
+      "completed": "Completada"
+    },
+    "calendar": {
+      "today": "Hoy",
+      "prevMonth": "Mes anterior",
+      "nextMonth": "Mes siguiente",
+      "weekdays": {
+        "sun": "Dom",
+        "mon": "Lun",
+        "tue": "Mar",
+        "wed": "Mié",
+        "thu": "Jue",
+        "fri": "Vie",
+        "sat": "Sáb"
+      },
+      "months": {
+        "0": "Enero",
+        "1": "Febrero",
+        "2": "Marzo",
+        "3": "Abril",
+        "4": "Mayo",
+        "5": "Junio",
+        "6": "Julio",
+        "7": "Agosto",
+        "8": "Septiembre",
+        "9": "Octubre",
+        "10": "Noviembre",
+        "11": "Diciembre"
+      },
+      "noBookings": "No hay reservas este día",
+      "bookingsOn": "Reservas del"
+    },
+    "metrics": {
+      "total": "Total Reservas",
+      "upcoming": "Próximas",
+      "pending": "Pendientes",
+      "cancelled": "Canceladas",
+      "fromLastMonth": "vs mes anterior"
+    }
+  },
+  "bookingModal": {
+    "title": "Nueva Reserva",
+    "description": "Ingresa los datos del cliente y selecciona la fecha u horario correspondiente para la reserva.",
+    "clientSection": "Datos del Cliente",
+    "fullName": "Nombre completo",
+    "fullNamePlaceholder": "Ej. María Pérez",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "ejemplo@correo.com",
+    "phone": "Teléfono",
+    "phonePlaceholder": "+58 412 1234567",
+    "service": "Servicio",
+    "selectService": "Selecciona un servicio",
+    "minAdvanceNoticeHint": "Este servicio requiere reserva con al menos {hours} horas de anticipación.",
+    "date": "Fecha",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "selectDates": "Seleccionar fechas",
+    "rangeHint": "Selecciona el rango de fechas para la reserva.",
+    "selectSlot": "Selecciona un horario disponible",
+    "startTime": "Hora de inicio",
+    "endTime": "Hora de fin",
+    "operationalHours": "Horario de atención",
+    "notes": "Notas adicionales",
+    "notesPlaceholder": "Detalles o requerimientos especiales...",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar reserva",
+    "tabs": {
+      "service": "Reserva",
+      "client": "Datos del Cliente"
+    },
+    "modes": {
+      "single_day": "Día completo",
+      "days_range": "Rango de días",
+      "time_slots": "Turnos por horas",
+      "fixed_classes": "Clases fijas",
+      "custom_time_range": "Horario personalizado"
+    },
+    "errors": {
+      "dateDisabled": "La fecha seleccionada no está disponible.",
+      "invalidRange": "La fecha de fin debe ser posterior a la fecha de inicio.",
+      "rangeHasDisabled": "El rango seleccionado contiene días no disponibles.",
+      "slotUnavailable": "El horario no está disponible o no cumple con la anticipación mínima.",
+      "endBeforeStart": "La hora de fin debe ser posterior a la hora de inicio.",
+      "outsideHours": "El horario seleccionado está fuera de la jornada operativa.",
+      "overlap": "El rango de tiempo choca con una reserva existente.",
+      "minAdvanceNotice": "No cumple con el tiempo mínimo de anticipación requerido."
+    }
+  }
+}

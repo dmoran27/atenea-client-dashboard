@@ -5,8 +5,8 @@ import { toast } from 'vue-sonner'
 import router from '@/core/router'
 import { authApi } from '@/core/api/auth'
 import { useTenantStore } from '@/core/stores/useTenantStore'
-import i18n from '@/core/plugins/i18n'
 import type { AuthUser } from '../api/auth/auth.interface'
+import { t } from '../plugins/i18n'
 
 export const useAuthStore = defineStore('auth', () => {
   const queryClient = useQueryClient()
@@ -16,12 +16,6 @@ export const useAuthStore = defineStore('auth', () => {
   const token = ref<string | null>(localStorage.getItem(tenantStore.tokenKey))
 
   const isAuthenticated = computed(() => Boolean(token.value))
-
-  // Helper para traducciones seguras fuera del setup de componentes
-  const getTranslation = (key: string): string => {
-    const globalI18n = i18n.global as any
-    return typeof globalI18n.t === 'function' ? globalI18n.t(key) : key
-  }
 
   function setSession(newToken: string, newUser: AuthUser) {
     token.value = newToken
@@ -41,7 +35,7 @@ export const useAuthStore = defineStore('auth', () => {
     router.push({ name: 'login' })
 
     if (showNotification) {
-      toast.info(getTranslation('auth.notifications.sessionExpired'))
+      toast.info(t('auth.notifications.sessionExpired'))
     }
   }
 
@@ -50,10 +44,10 @@ export const useAuthStore = defineStore('auth', () => {
       if (token.value) {
         await authApi.logout()
       }
-      toast.success(getTranslation('auth.notifications.logoutSuccess'))
+      toast.success(t('auth.notifications.logoutSuccess'))
     } catch (error) {
       console.error('Error al cerrar sesión:', error)
-      toast.error(getTranslation('auth.notifications.logoutError'))
+      toast.error(t('auth.notifications.logoutError'))
     } finally {
       clearSession()
     }
