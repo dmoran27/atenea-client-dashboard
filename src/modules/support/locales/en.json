@@ -1,0 +1,33 @@
+{
+  "support": {
+    "view": {
+      "title": "Support"
+    },
+    "tabs": {
+      "faqs": "Frequently Asked Questions",
+      "ticket": "Submit Ticket"
+    },
+    "faqTitle": "Help Center",
+    "faqDescription": "Find quick answers to common questions.",
+    "searchPlaceholder": "Search FAQs...",
+    "noResults": "No questions found matching your search.",
+    "ticketTitle": "Technical Support",
+    "ticketDescription": "If you cannot find an answer, send us a message and we will respond shortly.",
+    "ticketSent": "Your ticket has been sent successfully. We will contact you soon.",
+    "subject": "Subject",
+    "category": "Category",
+    "service": "Service (Optional)",
+    "message": "Message",
+    "submit": "Send Ticket",
+    "categories": {
+      "booking": "Bookings",
+      "payment": "Payments & Billing",
+      "account": "My Account"
+    },
+    "validation": {
+      "subjectMin": "The subject must be at least 5 characters long",
+      "categoryRequired": "Please select a category",
+      "messageMin": "The message must be at least 10 characters long"
+    }
+  }
+}

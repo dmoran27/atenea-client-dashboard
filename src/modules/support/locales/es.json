@@ -1,0 +1,33 @@
+{
+  "support": {
+    "view": {
+      "title": "Soporte"
+    },
+    "tabs": {
+      "faqs": "Preguntas Frecuentes",
+      "ticket": "Enviar Ticket"
+    },
+    "faqTitle": "Centro de Ayuda",
+    "faqDescription": "Encuentra respuestas rápidas a las dudas más comunes.",
+    "searchPlaceholder": "Buscar en las preguntas frecuentes...",
+    "noResults": "No se encontraron preguntas que coincidan con tu búsqueda.",
+    "ticketTitle": "Soporte Técnico",
+    "ticketDescription": "Si no encuentras respuesta, envíanos un mensaje y te responderemos pronto.",
+    "ticketSent": "Tu ticket ha sido enviado correctamente. Te contactaremos pronto.",
+    "subject": "Asunto",
+    "category": "Categoría",
+    "service": "Servicio (Opcional)",
+    "message": "Mensaje",
+    "submit": "Enviar Ticket",
+    "categories": {
+      "booking": "Reservas",
+      "payment": "Pagos y Facturación",
+      "account": "Mi Cuenta"
+    },
+    "validation": {
+      "subjectMin": "El asunto debe tener al menos 5 caracteres",
+      "categoryRequired": "Selecciona una categoría",
+      "messageMin": "El mensaje debe tener al menos 10 caracteres"
+    }
+  }
+}

@@ -7,12 +7,14 @@ import { dashboardRoutes } from '@/modules/dashboard/router.ts'
 import { authGuard, guestGuard, tenantModuleGuard } from './guards.ts'
 import { bookingRoutes } from '@/modules/bookings/router.ts'
 import { profileRoutes } from '@/modules/profile/router.ts'
+import { supportRoutes } from '@/modules/support/router.ts'
 
 // Colección centralizada de rutas de módulos administrativos
 const adminModuleRoutes: RouteRecordRaw[] = [
   ...dashboardRoutes,
   ...bookingRoutes,
   ...profileRoutes,
+  ...supportRoutes,
   // ...couponRoutes,
 ]
 

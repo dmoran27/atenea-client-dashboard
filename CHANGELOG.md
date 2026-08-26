@@ -5,6 +5,14 @@ Todos los cambios notables de este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/)
 y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-08-26
+
+### Added
+
+- Módulo de soporte y FAQ con integración de TanStack Query para fetching asíncrono y mutaciones de tickets.
+- Esquemas de validación con Zod para solicitudes de tickets (`createTicketSchema`).
+- Servicio `supportApi` y composable reactivo `useSupport`.
+
 ## [0.3.0] - 2026-08-26
 
 ### Added
