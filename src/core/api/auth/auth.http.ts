@@ -6,7 +6,7 @@ import type {
   ForgotPasswordPayload,
 } from '@/core/api/auth/auth.interface'
 
-export const authApiReal: IAuthApi = {
+export const authApiHttp: IAuthApi = {
   async login(credentials: LoginCredentials) {
     const { data } = await coreApi.post('/auth/login', credentials)
     return data

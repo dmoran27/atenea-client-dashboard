@@ -11,15 +11,15 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/core/components/ui/dropdown-menu'
-import { setLocale } from '@/core/plugins/i18n'
 import { ScrollArea } from '@/core/components/ui/scroll-area'
-import { useTheme } from '@/core/composables/useTheme'
+import { usePreferencesStore } from '@/core/stores/usePreferencesStore'
 import { useNotificationStore } from '@/core/stores/useNotificationStore'
-import { relativeTime } from '@/core/lib/utils'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const route = useRoute()
-const { theme, toggleTheme } = useTheme()
+
+const preferencesStore = usePreferencesStore()
+const { theme, currentLocale } = storeToRefs(preferencesStore)
 
 const notificationStore = useNotificationStore()
 const { notifications, unreadCount, isLoading } = storeToRefs(notificationStore)
@@ -101,9 +101,11 @@ onMounted(() => {
                 <p class="mt-0.5 text-xs text-muted-foreground leading-relaxed">
                   {{ item.description }}
                 </p>
-                <p class="mt-1 text-[11px] text-muted-foreground/80">
-                  {{ t('notifications.ago') }} {{ relativeTime(item.minutesAgo) }}
-                </p>
+                <!--
+                  <p class="mt-1 text-[11px] text-muted-foreground/80">
+                    {{ t('notifications.ago') }} {{ relativeTime(item.minutesAgo) }}
+                  </p>
+                -->
               </div>
             </div>
           </ScrollArea>
@@ -120,14 +122,14 @@ onMounted(() => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem
-            :class="locale === 'es' ? 'font-semibold text-primary' : ''"
-            @click="setLocale('es')"
+            :class="currentLocale === 'es' ? 'font-semibold text-primary' : ''"
+            @click="preferencesStore.setLanguage('es')"
           >
             🇪🇸 Español
           </DropdownMenuItem>
           <DropdownMenuItem
-            :class="locale === 'en' ? 'font-semibold text-primary' : ''"
-            @click="setLocale('en')"
+            :class="currentLocale === 'en' ? 'font-semibold text-primary' : ''"
+            @click="preferencesStore.setLanguage('en')"
           >
             🇬🇧 English
           </DropdownMenuItem>
@@ -139,7 +141,7 @@ onMounted(() => {
         variant="ghost"
         size="icon"
         :title="theme === 'dark' ? t('header.light') : t('header.dark')"
-        @click="toggleTheme()"
+        @click="preferencesStore.toggleTheme"
       >
         <Sun v-if="theme === 'dark'" class="h-4 w-4" />
         <Moon v-else class="h-4 w-4" />

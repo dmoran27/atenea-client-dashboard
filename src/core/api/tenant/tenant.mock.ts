@@ -9,7 +9,7 @@ export const tenantMock: ITenantApi = {
       id: 'tenant-123',
       slug: 'barberia-capital',
       name: 'Barbería Capital',
-      modules: ['dashboard', 'bookings', 'coupons'],
+      modules: ['dashboard', 'bookings', 'coupons', 'orders', 'profile', 'support'],
     }
   },
 }

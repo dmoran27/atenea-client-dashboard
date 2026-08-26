@@ -5,6 +5,16 @@ Todos los cambios notables de este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/)
 y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2026-08-26
+
+### Fixed
+
+- Renombrado de la implementación del servicio de autenticación (`authApiReal` a `authApiHttp`).
+
+### Changed
+
+- Migración de composables de tema e idioma (`useTheme`, `useLanguage`) a un store centralizado de Pinia (`usePreferencesStore`).
+
 ## [0.2.1] - 2026-08-26
 
 ### added
