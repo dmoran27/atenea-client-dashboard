@@ -9,6 +9,7 @@ import { bookingRoutes } from '@/modules/bookings/router.ts'
 import { profileRoutes } from '@/modules/profile/router.ts'
 import { supportRoutes } from '@/modules/support/router.ts'
 import { couponRoutes } from '@/modules/coupons/router.ts'
+import { orderRoutes } from '@/modules/orders/router.ts'
 
 // Colección centralizada de rutas de módulos administrativos
 const adminModuleRoutes: RouteRecordRaw[] = [
@@ -17,6 +18,7 @@ const adminModuleRoutes: RouteRecordRaw[] = [
   ...profileRoutes,
   ...supportRoutes,
   ...couponRoutes,
+  ...orderRoutes,
 ]
 
 const routes: RouteRecordRaw[] = [

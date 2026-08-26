@@ -1,0 +1,34 @@
+{
+  "orders": {
+    "view": {
+      "title": "Historial de Pedidos",
+      "description": "Consulta el detalle y estado de tus facturas y transacciones realizadas."
+    },
+    "searchPlaceholder": "Buscar por concepto o ID...",
+    "dateFrom": "Desde",
+    "dateTo": "Hasta",
+    "columns": {
+      "id": "Nº Orden",
+      "concept": "Concepto",
+      "date": "Fecha",
+      "amount": "Monto",
+      "status": "Estado",
+      "actions": "Factura"
+    },
+    "filter": {
+      "all": "Todos",
+      "paid": "Pagados",
+      "pending": "Pendientes",
+      "refunded": "Reembolsados",
+      "failed": "Fallidos"
+    },
+    "status": {
+      "paid": "Pagado",
+      "pending": "Pendiente",
+      "refunded": "Reembolsado",
+      "failed": "Fallido"
+    },
+    "downloadInvoice": "Descargar PDF",
+    "emptyList": "No se encontraron órdenes ni facturas registradas."
+  }
+}

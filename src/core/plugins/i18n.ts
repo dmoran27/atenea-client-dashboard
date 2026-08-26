@@ -1,18 +1,18 @@
+import { type WritableComputedRef } from 'vue'
 import { createI18n } from 'vue-i18n'
-
 import coreEs from '../locales/es.json'
 import coreEn from '../locales/en.json'
 
 export type AppLocale = 'es' | 'en'
 
 const STORAGE_KEY = 'atenea-locale'
-const messages: Record<string, unknown> = {
+
+const messages: Record<AppLocale, Record<string, any>> = {
   es: { ...coreEs },
   en: { ...coreEn },
 }
 
-// Carga automática de los locales de cada módulo
-const moduleLocales = import.meta.glob<{ default: Record<string, unknown> }>(
+const moduleLocales = import.meta.glob<{ default: Record<string, any> }>(
   '/src/modules/**/locales/*.json',
   { eager: true },
 )
@@ -32,30 +32,55 @@ function getInitialLocale(): AppLocale {
   return 'es'
 }
 
-const i18n = createI18n({
+// Aplicamos `as const` para asegurar literales exactos (ej: style: 'currency' en vez de string)
+const numberFormats = {
+  es: {
+    currency: {
+      style: 'currency',
+      currency: 'VES',
+      currencyDisplay: 'symbol',
+      minimumFractionDigits: 2,
+    },
+    currencyEUR: { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 },
+    currencyUSD: { style: 'currency', currency: 'USD', minimumFractionDigits: 2 },
+  },
+  en: {
+    currency: {
+      style: 'currency',
+      currency: 'USD',
+      currencyDisplay: 'symbol',
+      minimumFractionDigits: 2,
+    },
+    currencyVES: { style: 'currency', currency: 'VES', minimumFractionDigits: 2 },
+    currencyEUR: { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 },
+  },
+} as const
+
+export const i18n = createI18n({
   legacy: false,
   locale: getInitialLocale(),
   fallbackLocale: 'es',
   messages,
+  numberFormats,
 })
 
 export function setLocale(locale: AppLocale) {
-  // Casteo explícito a Ref para asegurar reactividad en TypeScript
-  ;(i18n.global.locale as unknown as { value: AppLocale }).value = locale
+  const globalLocale = i18n.global.locale as unknown as WritableComputedRef<AppLocale>
+  globalLocale.value = locale
   localStorage.setItem(STORAGE_KEY, locale)
   document.documentElement.lang = locale
 }
 
 export function getLocale(): AppLocale {
-  return (i18n.global.locale as unknown as { value: AppLocale }).value
+  const globalLocale = i18n.global.locale as unknown as WritableComputedRef<AppLocale>
+  return globalLocale.value
 }
 
-export function t(key: string, pluralization?: number, options?: any): string {
-  const globalI18n = i18n.global as any
-  if (typeof globalI18n.t === 'function') {
-    return globalI18n.t(key, pluralization, options)
+export function t(key: string, pluralization?: number, options?: Record<string, unknown>): string {
+  if (pluralization !== undefined) {
+    return i18n.global.t(key, pluralization, options ?? {})
   }
-  return key
+  return i18n.global.t(key, options ?? {})
 }
 
 export default i18n

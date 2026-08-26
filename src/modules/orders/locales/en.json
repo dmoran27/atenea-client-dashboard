@@ -1,0 +1,34 @@
+{
+  "orders": {
+    "view": {
+      "title": "Order History",
+      "description": "View details and status for your invoices and past transactions."
+    },
+    "searchPlaceholder": "Search by concept or ID...",
+    "dateFrom": "From",
+    "dateTo": "To",
+    "columns": {
+      "id": "Order ID",
+      "concept": "Concept",
+      "date": "Date",
+      "amount": "Amount",
+      "status": "Status",
+      "actions": "Invoice"
+    },
+    "filter": {
+      "all": "All",
+      "paid": "Paid",
+      "pending": "Pending",
+      "refunded": "Refunded",
+      "failed": "Failed"
+    },
+    "status": {
+      "paid": "Paid",
+      "pending": "Pending",
+      "refunded": "Refunded",
+      "failed": "Failed"
+    },
+    "downloadInvoice": "Download PDF",
+    "emptyList": "No registered orders or invoices found."
+  }
+}
