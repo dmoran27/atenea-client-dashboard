@@ -1,10 +1,14 @@
 # 💻 Atenea Client Dashboard
 
-> Dashboard administrativo interactivo para clientes del sistema **Atenea**, enfocado en la gestión en tiempo real de solicitudes de reserva, agendas y configuración de la cuenta.
-
+![Status](https://img.shields.io/badge/Status-In_Development-yellow?style=for-the-badge)
 ![Vue 3](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+
+Dashboard administrativo interactivo para clientes del sistema **Atenea**, enfocado en la gestión en tiempo real de solicitudes de reserva, agendas y configuración de la cuenta.
+
+- **Demo en vivo:** [democlientdashboard.netlify.app](https://democlientdashboard.netlify.app) (Ejecutándose con _Mock Data_ habilitado).
+- **Nota para la Demo (Modo Mock):** Al estar activado `VITE_USE_MOCKS=true`, el sistema no requiere credenciales reales. Puedes iniciar sesión ingresando cualquier correo electrónico y una contraseña simulada de más de 6 caracteres en la pantalla de Login.
 
 ## 🌐 Ecosistema de Arquitectura
 
@@ -246,3 +250,14 @@ export function init() {
 ```
 
 ¡Listo! El motor de widgets registrará automáticamente el identificador BookingsStatsWidget mapeando import.meta.glob('../modules/**/widgets/**/index.vue'). Cuando la API del Dashboard solicite la renderización del widget "BookingsStatsWidget", se cargará e inyectará de forma asíncrona (lazy loading).
+
+## 🚧 Estado del Proyecto & Próximas Funcionalidades
+
+Este repositorio se encuentra en **desarrollo activo**. Aunque la interfaz y el modo demo son completamente funcionales para evaluación, se están integrando progresivamente las siguientes características:
+
+- [x] Dashboard dinámico con widgets desacoplados.
+- [x] Gestión interactiva de reservas con tabla y calendario.
+- [x] Soporte i18n y cambio de tema visual.
+- [ ] Conexión completa con endpoints de producción (`Atenea Engine` / `Atenea Core`).
+- [ ] Soporte para autenticación multitenant por subdominio (`X-Tenant-ID`).
+- [ ] Cobertura de pruebas unitarias y de componentes.
