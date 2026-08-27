@@ -1,4 +1,4 @@
-import { bookingApi } from '../client'
+import { bookingApi } from '@/core/api/client'
 import type {
   Booking,
   BookingServiceConfig,
@@ -7,6 +7,7 @@ import type {
   CreateBookingPayload,
   UpdateBookingPayload,
   CancelBookingPayload,
+  BookingDashboardMetrics,
 } from './booking.interface'
 
 export const bookingHttpApi: IBookingApi = {
@@ -42,6 +43,11 @@ export const bookingHttpApi: IBookingApi = {
 
   async getBookingServiceConfigById(id: string): Promise<BookingServiceConfig | undefined> {
     const { data } = await bookingApi.get<BookingServiceConfig>(`/services/${id}`)
+    return data
+  },
+
+  async getBookingDashboardMetrics(): Promise<BookingDashboardMetrics> {
+    const { data } = await bookingApi.get<BookingDashboardMetrics>('/bookings/metrics')
     return data
   },
 }

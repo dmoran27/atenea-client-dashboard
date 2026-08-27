@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from '@lucide/vue'
 import { Button } from '@/core/components/ui/button'
 import BookingCalendarDetail from './BookingCalendarDetail.vue'
 import { useCalendar } from '../composables/useCalendar'
-import type { Booking, BookingStatus } from '@/core/api/booking'
+import type { Booking, BookingStatus } from '@/modules/bookings/api'
 import { formatLocalDate } from '@/core/lib/utils.ts'
 
 const props = defineProps<{

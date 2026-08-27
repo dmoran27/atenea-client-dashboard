@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 export const profileRoutes: RouteRecordRaw[] = [
   {
-    path: '/profile',
+    path: 'profile',
     name: 'profile',
     component: () => import('./views/ProfileView.vue'),
     meta: {

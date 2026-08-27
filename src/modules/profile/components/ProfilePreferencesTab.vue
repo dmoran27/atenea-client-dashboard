@@ -10,23 +10,17 @@ import {
 } from '@/core/components/ui/card'
 import { Button } from '@/core/components/ui/button'
 import { Label } from '@/core/components/ui/label'
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from '@/core/components/ui/select'
 import { useProfile } from '../composables/useProfile'
 import { usePreferencesStore } from '@/core/stores/usePreferencesStore'
 import type { AppLocale } from '@/core/plugins/i18n'
 import type { ThemeMode } from '@/core/types/global'
+import LanguageSelector from '@/core/components/LanguageSelector.vue'
 
 const { t } = useI18n()
 const { profile, updatePreferences } = useProfile()
 
 const preferencesStore = usePreferencesStore()
-const { theme, currentLocale } = storeToRefs(preferencesStore)
+const { theme } = storeToRefs(preferencesStore)
 
 function changeLanguage(locale: AppLocale) {
   preferencesStore.setLanguage(locale)
@@ -58,21 +52,7 @@ function handleToggleNotification(type: 'email' | 'sms') {
 
     <CardContent class="space-y-6">
       <!-- Selección de Idioma -->
-      <div class="space-y-2">
-        <Label>{{ t('profile.preferences.language') }}</Label>
-        <Select
-          :model-value="currentLocale"
-          @update:model-value="(v) => v && changeLanguage(v as AppLocale)"
-        >
-          <SelectTrigger class="w-full sm:w-[200px]">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="es"> {{ t('languages.es') }}</SelectItem>
-            <SelectItem value="en"> {{ t('languages.en') }}</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+      <LanguageSelector variant="select" :change-language="(lang) => changeLanguage(lang)" />
 
       <!-- Selección de Tema -->
       <div class="space-y-2">

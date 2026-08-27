@@ -1,6 +1,6 @@
 import { computed, toValue, type MaybeRefOrGetter } from 'vue'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/vue-query'
-import { bookingApi } from '@/core/api/booking'
+import { bookingApi } from '@/modules/bookings/api'
 import {
   getCreateBookingSchema,
   getUpdateBookingSchema,
@@ -9,7 +9,7 @@ import {
   type UpdateBookingSchema,
   type CancelBookingSchema,
 } from '../schemas/booking.schema'
-import type { BookingFilters, CancelBookingPayload } from '@/core/api/booking'
+import type { BookingFilters, CancelBookingPayload } from '@/modules/bookings/api'
 
 export const bookingKeys = {
   all: ['bookings'] as const,
@@ -18,6 +18,7 @@ export const bookingKeys = {
     [...bookingKeys.lists(), () => toValue(filters)] as const,
   details: () => [...bookingKeys.all, 'detail'] as const,
   detail: (id: MaybeRefOrGetter<string>) => [...bookingKeys.details(), () => toValue(id)] as const,
+  metrics: () => [...bookingKeys.all, 'metrics'] as const,
 }
 
 export function useBookings(filters?: MaybeRefOrGetter<BookingFilters>) {
@@ -100,5 +101,20 @@ export function useBookingDetail(id: MaybeRefOrGetter<string>) {
     isLoading: detailQuery.isLoading,
     error: detailQuery.error,
     refetch: detailQuery.refetch,
+  }
+}
+
+// 2. Composable para obtener las métricas del dashboard
+export function useBookingMetrics() {
+  const metricsQuery = useQuery({
+    queryKey: bookingKeys.metrics(),
+    queryFn: () => bookingApi.getBookingDashboardMetrics(),
+  })
+
+  return {
+    metrics: computed(() => metricsQuery.data.value),
+    isLoadingMetrics: metricsQuery.isLoading,
+    metricsError: metricsQuery.error,
+    refetchMetrics: metricsQuery.refetch,
   }
 }

@@ -1,5 +1,5 @@
 import { ref, computed, toValue, type MaybeRefOrGetter } from 'vue'
-import type { Booking, BookingServiceConfig, DaySchedule } from '@/core/api/booking'
+import type { Booking, BookingServiceConfig, DaySchedule } from '@/modules/bookings/api'
 import { formatLocalDate } from '@/core/lib/utils'
 import { timeToMinutes } from '../utils/booking.utils'
 

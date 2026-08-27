@@ -27,7 +27,7 @@ import { useBookingServices } from '../composables/useBookingServices'
 import { useBookingValidation } from '../composables/useBookingValidation'
 import { useBookingFormState } from '../composables/useBookingFormState'
 import { useAuthStore } from '@/core/stores/useAuthStore'
-import type { Booking, BookingStatus, BookingServiceConfig } from '@/core/api/booking'
+import type { Booking, BookingStatus, BookingServiceConfig } from '@/modules/bookings/api'
 import { formatLocalDate } from '@/core/lib/utils'
 
 // Importamos usando alias para evitar colisión de nombres con las funciones locales

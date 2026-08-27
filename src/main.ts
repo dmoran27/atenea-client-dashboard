@@ -3,12 +3,14 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
-import router from '@/core/router'
 import i18n from '@/core/plugins/i18n'
 import { VueQueryPlugin, queryClient } from '@/core/plugins/vue-query'
 import { useTenantStore } from '@/core/stores/useTenantStore'
 import { useAuthStore } from '@/core/stores/useAuthStore'
 import '@/assets/styles/main.css'
+import 'vue-sonner/style.css'
+import { initModules } from './core/bootstrap/modules.ts'
+import router from './core/router/index.ts'
 
 async function bootstrap() {
   const app = createApp(App)
@@ -22,6 +24,8 @@ async function bootstrap() {
   // 2. Carga de datos críticos previos al montaje
   const tenantStore = useTenantStore()
   const authStore = useAuthStore()
+
+  initModules()
 
   try {
     await Promise.all([

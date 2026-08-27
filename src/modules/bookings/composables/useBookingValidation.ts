@@ -1,6 +1,6 @@
 import { computed, type Ref } from 'vue'
 import { t } from '@/core/plugins/i18n'
-import type { BookingServiceConfig } from '@/core/api/booking'
+import type { BookingServiceConfig } from '@/modules/bookings/api'
 import { formatLocalDate } from '@/core/lib/utils'
 import {
   timeToMinutes,

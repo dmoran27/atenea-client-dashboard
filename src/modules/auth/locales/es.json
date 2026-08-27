@@ -2,7 +2,8 @@
   "auth": {
     "notifications": {
       "loginSuccess": "¡Bienvenido de nuevo!",
-      "signupSuccess": "¡Cuenta creada con éxito! Bienvenido."
+      "signupSuccess": "¡Cuenta creada con éxito! Bienvenido.",
+      "logoutSuccess": "Has cerrado sesión correctamente"
     },
     "errors": {
       "invalidCredentials": "El correo o la contraseña son incorrectos.",

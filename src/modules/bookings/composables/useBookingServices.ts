@@ -1,6 +1,6 @@
 import { computed, toValue, type MaybeRefOrGetter } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
-import { bookingApi, type BookingServiceConfig, type DaySchedule } from '@/core/api/booking'
+import { bookingApi, type BookingServiceConfig, type DaySchedule } from '@/modules/bookings/api'
 import { formatLocalDate } from '@/core/lib/utils'
 
 export const bookingServiceKeys = {

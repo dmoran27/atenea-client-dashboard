@@ -7,6 +7,7 @@ import type {
   CreateBookingPayload,
   UpdateBookingPayload,
   CancelBookingPayload,
+  BookingDashboardMetrics,
 } from './booking.interface'
 export const mockBookingServiceConfigs: BookingServiceConfig[] = [
   // 1. time_slots: Consulta Médica / Nutricional (Individual, intervalos calculados)
@@ -307,5 +308,32 @@ export const bookingMockApi: IBookingApi = {
   async getBookingServiceConfigById(id: string): Promise<BookingServiceConfig | undefined> {
     await delay(200)
     return mockBookingServiceConfigs.find((s) => s.id === id)
+  },
+
+  async getBookingDashboardMetrics(): Promise<BookingDashboardMetrics> {
+    await delay(300)
+
+    const todayStr = formatLocalDate(dateOffset(0))
+
+    const total = mockBookings.length
+    const pending = mockBookings.filter((b) => b.status === 'pending').length
+    const cancelled = mockBookings.filter((b) => b.status === 'cancelled').length
+
+    const upcoming = mockBookings.filter(
+      (b) => (b.status === 'confirmed' || b.status === 'pending') && b.date >= todayStr,
+    ).length
+
+    return {
+      total,
+      upcoming,
+      pending,
+      cancelled,
+      trends: {
+        total: { value: '+12%', isUp: true },
+        upcoming: { value: '+8%', isUp: true },
+        pending: { value: '-3%', isUp: false },
+        cancelled: { value: '-15%', isUp: false },
+      },
+    }
   },
 }

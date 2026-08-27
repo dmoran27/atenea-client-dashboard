@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 export const orderRoutes: RouteRecordRaw[] = [
   {
-    path: '/orders',
+    path: 'orders',
     name: 'orders',
     component: () => import('./views/OrderView.vue'),
     meta: {

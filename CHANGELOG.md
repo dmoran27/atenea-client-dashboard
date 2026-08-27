@@ -5,6 +5,38 @@ Todos los cambios notables de este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/)
 y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-08-26
+
+### Added
+
+- Registro e integración dinámica de widgets en el dashboard según los módulos activos del cliente.
+- Widgets de estadísticas (BookingsStatsWidget) y próxima reservación (NextBookingWidget).
+- Componentes para la selección global de idioma (LanguageSelector) y tema visual (ThemeToggle).
+- Endpoint de API para la consulta de métricas y estadísticas del módulo de reservas.
+
+### Fixed
+
+- Corrección y completación de claves de traducción globales e internas.
+- Soporte para la prop showFooter en ViewBookingDialog para ocultar condicionalmente las acciones del footer.
+- Normalización en la definición de rutas hijas bajo /admin, removiendo la barra diagonal (/) inicial para evitar inconsistencias en el enrutador.
+
+### Changed
+
+- Migración del sistema de rutas en el core: de registro manual a auto-descubrimiento dinámico de rutas por módulo.
+- Modularización de la API de reservas, trasladándola del core hacia el módulo de bookings.
+
+## [0.6.0] - 2026-08-26
+
+### Added
+
+- Soporte para formateo multi-moneda (`VES`, `EUR`, `USD`) en la configuración central de Vue I18n mediante presets de `numberFormats`.
+- Módulo de Órdenes, integración de la vista principal con filtros de búsqueda en tiempo real por concepto e ID, e intervalo de fechas (`dateFrom`, `dateTo`).
+- Archivos de traducción locales en español e inglés (`es.json`, `en.json`) para el módulo de órdenes, cubriendo estados, columnas y acciones de la interfaz.
+
+### Changed
+
+- Refactorización de la instancia central de `i18n` con tipado estricto en TypeScript (`WritableComputedRef`) para resolver sobrecargas de métodos y evitar fallos al manipular el `locale` activo.
+
 ## [0.5.0] - 2026-08-26
 
 ### Added

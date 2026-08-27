@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { Clock, Calendar as CalendarIcon } from '@lucide/vue'
 import { Badge } from '@/core/components/ui/badge'
 import { useBookingServices } from '../composables/useBookingServices'
-import type { Booking, BookingStatus } from '@/core/api/booking'
+import type { Booking, BookingStatus } from '@/modules/bookings/api'
 import BookingActionsMenu from './ui/BookingActionsMenu.vue'
 
 const props = defineProps<{

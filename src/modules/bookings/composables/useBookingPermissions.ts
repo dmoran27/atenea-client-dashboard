@@ -1,5 +1,5 @@
 import { computed, type Ref, type MaybeRefOrGetter, toValue } from 'vue'
-import type { Booking } from '@/core/api/booking'
+import type { Booking } from '@/modules/bookings/api'
 import { isBookingPast } from '../utils/booking.utils'
 
 export interface UseBookingPermissionsOptions {

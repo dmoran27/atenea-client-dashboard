@@ -3,23 +3,20 @@ import { computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { Globe, Sun, Moon, Bell, Inbox } from '@lucide/vue'
+import { Bell, Inbox } from '@lucide/vue'
 import { Button } from '@/core/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
-  DropdownMenuItem,
 } from '@/core/components/ui/dropdown-menu'
 import { ScrollArea } from '@/core/components/ui/scroll-area'
-import { usePreferencesStore } from '@/core/stores/usePreferencesStore'
 import { useNotificationStore } from '@/core/stores/useNotificationStore'
+import ThemeToggle from '../ThemeToggle.vue'
+import LanguageSelector from '../LanguageSelector.vue'
 
 const { t } = useI18n()
 const route = useRoute()
-
-const preferencesStore = usePreferencesStore()
-const { theme, currentLocale } = storeToRefs(preferencesStore)
 
 const notificationStore = useNotificationStore()
 const { notifications, unreadCount, isLoading } = storeToRefs(notificationStore)
@@ -113,40 +110,10 @@ onMounted(() => {
       </DropdownMenu>
 
       <!-- Selector de Idioma -->
-      <DropdownMenu>
-        <DropdownMenuTrigger as-child>
-          <Button variant="ghost" size="icon" :title="t('header.language')">
-            <Globe class="h-4 w-4" />
-            <span class="sr-only">{{ t('header.language') }}</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem
-            :class="currentLocale === 'es' ? 'font-semibold text-primary' : ''"
-            @click="preferencesStore.setLanguage('es')"
-          >
-            🇪🇸 Español
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            :class="currentLocale === 'en' ? 'font-semibold text-primary' : ''"
-            @click="preferencesStore.setLanguage('en')"
-          >
-            🇬🇧 English
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <LanguageSelector variant="dropdown" />
 
       <!-- Selector de Tema -->
-      <Button
-        variant="ghost"
-        size="icon"
-        :title="theme === 'dark' ? t('header.light') : t('header.dark')"
-        @click="preferencesStore.toggleTheme"
-      >
-        <Sun v-if="theme === 'dark'" class="h-4 w-4" />
-        <Moon v-else class="h-4 w-4" />
-        <span class="sr-only">{{ t('header.theme') }}</span>
-      </Button>
+      <ThemeToggle />
     </div>
   </header>
 </template>

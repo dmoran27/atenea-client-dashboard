@@ -22,7 +22,7 @@ import {
 import { Button } from '@/core/components/ui/button'
 import { Badge } from '@/core/components/ui/badge'
 import { Separator } from '@/core/components/ui/separator'
-import type { Booking } from '@/core/api/booking'
+import type { Booking } from '@/modules/bookings/api'
 import { useBookingServices } from '../composables/useBookingServices'
 import { useBookingPermissions } from '../composables/useBookingPermissions'
 
@@ -31,9 +31,11 @@ const props = withDefaults(
     open: boolean
     booking: Booking | null
     allowPastReschedule?: boolean
+    showFooter?: boolean
   }>(),
   {
     allowPastReschedule: false,
+    showFooter: true,
   },
 )
 
@@ -178,7 +180,7 @@ function getStatusBadgeVariant(status: string) {
       </div>
 
       <!-- Acciones -->
-      <DialogFooter class="flex-col sm:flex-row gap-2 pt-2">
+      <DialogFooter class="flex-col sm:flex-row gap-2 pt-2" v-if="showFooter">
         <Button
           v-if="canReschedule"
           variant="outline"

@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 export const couponRoutes: RouteRecordRaw[] = [
   {
-    path: '/coupons',
+    path: 'coupons',
     name: 'coupons',
     component: () => import('./views/CouponsView.vue'),
     meta: {

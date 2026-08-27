@@ -91,6 +91,24 @@ export interface CancelBookingPayload {
   reason?: string
 }
 
+export interface TrendInfo {
+  value: string
+  isUp: boolean
+}
+
+export interface BookingDashboardMetrics {
+  total: number
+  upcoming: number
+  pending: number
+  cancelled: number
+  trends: {
+    total: TrendInfo
+    upcoming: TrendInfo
+    pending: TrendInfo
+    cancelled: TrendInfo
+  }
+}
+
 export interface IBookingApi {
   getBookings(filters?: BookingFilters): Promise<Booking[]>
   getBookingById(id: string): Promise<Booking>
@@ -99,4 +117,5 @@ export interface IBookingApi {
   cancelBooking(id: string, payload?: CancelBookingPayload): Promise<Booking>
   getBookingServiceConfigs(): Promise<BookingServiceConfig[]>
   getBookingServiceConfigById(id: string): Promise<BookingServiceConfig | undefined>
+  getBookingDashboardMetrics(): Promise<BookingDashboardMetrics>
 }

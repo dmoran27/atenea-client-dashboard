@@ -4,7 +4,7 @@ import type { RouteRecordRaw } from 'vue-router'
 export const dashboardRoutes: RouteRecordRaw[] = [
   { path: '/', redirect: '/dashboard' },
   {
-    path: '/dashboard',
+    path: 'dashboard',
     name: 'dashboard',
     component: () => import('./views/DashbordView.vue'),
     meta: {

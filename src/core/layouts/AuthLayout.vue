@@ -16,7 +16,9 @@ import SiteName from '@/core/components/SiteName.vue'
     ></div>
 
     <div class="absolute right-4 top-4 z-10 flex items-center gap-2">
-      <LanguageSelector />
+      <!-- Selector de Idioma -->
+      <LanguageSelector variant="dropdown" />
+      <!-- Selector de Tema -->
       <ThemeToggle />
     </div>
 

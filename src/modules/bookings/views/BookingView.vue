@@ -14,7 +14,7 @@ import {
 } from '@/core/components/ui/select'
 
 // Componentes del módulo
-import BookingMetricsWidget from '@/modules/bookings/components/widgets/BookingMetricsWidget.vue'
+import BookingKpisWidget from '@/modules/bookings/components/widgets/BookingKpisWidget.vue'
 import BookingsTable from '@/modules/bookings/components/BookingsTable.vue'
 import BookingsCalendar from '@/modules/bookings/components/BookingsCalendar.vue'
 import NewBookingDialog from '@/modules/bookings/components/NewBookingDialog.vue'
@@ -24,7 +24,7 @@ import RescheduleBookingDialog from '@/modules/bookings/components/RescheduleBoo
 // Composable & Tipos
 import type { ViewMode } from '../types'
 import type { CreateBookingSchema } from '../schemas/booking.schema'
-import type { Booking, BookingStatus } from '@/core/api/booking'
+import type { Booking, BookingStatus } from '@/modules/bookings/api'
 import { useBookings } from '../composables/useBooking'
 
 const { t } = useI18n()
@@ -105,7 +105,7 @@ const handleRescheduleBooking = async (payload: {
 <template>
   <div class="space-y-6">
     <!-- Métrica de Reservas -->
-    <BookingMetricsWidget :bookings="bookings" />
+    <BookingKpisWidget />
 
     <!-- Barra de Controles: Búsqueda, Filtros y Modo de Vista -->
     <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
